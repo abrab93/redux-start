@@ -1,8 +1,7 @@
-import * as actionTypes from '../store/actions';
+import * as actionTypes from '../actions';
 
 const initialState = {
     counter: 0,
-    results: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -26,23 +25,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 counter: state.counter - action.value
-            }
-        case actionTypes.STORE_RESULT:
-            return {
-                ...state,
-                results: state.results.concat({ id: (new Date()).getTime(), value: state.counter })
-            }
-        case actionTypes.DELETE_RESULT:
-            // let newResults = [...state.results];
-            // const index = state.results.findIndex(el => el.id === action.elemId);
-            // newResults.splice(index, 1);
-            // or we can use filter method, it gives back a copy of the array with elements where id != to the provided elemId
-
-            const updatedResults = state.results.filter(el => el.id !== action.elemId);
-            
-            return {
-                ...state,
-                results: updatedResults
             }
         default: return state;
     }
