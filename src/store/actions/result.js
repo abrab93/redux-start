@@ -8,8 +8,10 @@ export const saveResult = (result) =>{
 };
 
 export const storeResult = (result) =>{
-    return dispatch => {
+    return ( dispatch, getState ) => {
         setTimeout( () =>{
+            // getState: utility method to get the state in the actionCreator
+            //console.log(getState().ctr.counter);
             dispatch(saveResult(result));
         }, 2000);
     }
